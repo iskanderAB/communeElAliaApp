@@ -58,8 +58,8 @@ const Lang = () => {
         <TouchableOpacity
             style={styles.button}
             // onPress={onPress}
-          >
-            <Text style={styles.textTouchable}>التالي
+        >
+            <Text style={styles.textTouchable}> التالي
              </Text>
           </TouchableOpacity>
       </View>

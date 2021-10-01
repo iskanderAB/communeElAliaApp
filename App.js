@@ -31,7 +31,6 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.main}>
-      <Lang />
     </SafeAreaView>
   );
 };
