@@ -21,6 +21,7 @@ import {
   Dimensions,
 } from 'react-native';
 import Splash from './Views/Splash/Splash';
+import Lang from './Views/Langs/Lang';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -30,7 +31,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.main}>
-      <Splash />
+      <Lang />
     </SafeAreaView>
   );
 };
