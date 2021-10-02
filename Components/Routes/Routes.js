@@ -8,7 +8,13 @@ import Login from '../../Views/Login/Login';
 import Lang from '../../Views/Langs/Lang';
 import Signup from '../../Views/Signup/Signup';
 import Home from '../../Views/Home/Home';
+
 import TabScreens from '../../Views/TabScreens/TabScreens';
+
+import InstructionsRequest from '../../Views/SendRequest/InstructionsRequest';
+import RequestInfos from '../../Views/SendRequest/RequestInfos';
+import FormatInfos from '../../Views/SendRequest/FormatInfos';
+
 
 const Stack = createNativeStackNavigator();
 // const Tab = cre
@@ -40,6 +46,21 @@ function App() {
         <Stack.Screen
           name="TabScreens"
           component={TabScreens}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="InstructionsRequest"
+          component={InstructionsRequest}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RequestInfos"
+          component={RequestInfos}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FormatInfos"
+          component={FormatInfos}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
