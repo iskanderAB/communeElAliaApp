@@ -20,9 +20,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Splash from './Views/Splash/Splash';
-import Lang from './Views/Langs/Lang';
 
+import Routes from './Components/Routes/Routes';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -31,6 +30,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.main}>
+      <Routes />
     </SafeAreaView>
   );
 };
