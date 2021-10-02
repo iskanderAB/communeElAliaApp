@@ -5,6 +5,9 @@ import Start from '../../Views/Start/Start';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../../Views/Login/Login';
+import Lang from '../../Views/Langs/Lang';
+import Signup from '../../Views/Signup/Signup';
+import Home from '../../Views/Home/Home';
 
 const Stack = createNativeStackNavigator();
 // const Tab = cre
@@ -12,7 +15,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Start">
         <Stack.Screen
           name="Start"
           component={Start}
@@ -21,6 +24,21 @@ function App() {
         <Stack.Screen
           name="Login"
           component={Login}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Language"
+          component={Lang}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
