@@ -20,18 +20,30 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import {Provider ,DefaultTheme} from 'react-native-paper';
 
 import Routes from './Components/Routes/Routes';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'green',
+    accent: 'yellow',
+  },
+};
+
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaView style={styles.main}>
-      <Routes />
-    </SafeAreaView>
+    <Provider theme={theme}>
+      <SafeAreaView style={styles.main}>
+        <Routes />
+      </SafeAreaView>
+    </Provider>
   );
 };
 

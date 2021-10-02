@@ -62,7 +62,7 @@ const Lang = props => {
         </View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => props.navigation.navigate('Home')}>
+          onPress={() => props.navigation.navigate('TabScreens')}>
           <Text style={styles.textTouchable}> التالي</Text>
         </TouchableOpacity>
       </View>
