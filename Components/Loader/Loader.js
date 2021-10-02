@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Animated} from 'react-native';
+import greenColor from '../../colors/Colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,24 +17,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   square: {
-    width: 15,
-    height: 50,
+    width: 10,
+    height: 20,
     margin: 2,
-    backgroundColor: '#000',
+    backgroundColor: greenColor,
     borderWidth: 2,
-    borderColor: '#000',
+    borderColor: greenColor,
   },
 });
 
-// @flow
-
-type PropsObjectAnimated = {
-  value: Animated.Value,
-  colors: Array<string>,
-  scales: Array<number>,
-};
-
-const ObjectAnimated = ({value, colors, scales}: PropsObjectAnimated) => (
+const ObjectAnimated = ({value, colors, scales}) => (
   <Animated.View
     style={[
       styles.square,
@@ -55,61 +48,53 @@ const ObjectAnimated = ({value, colors, scales}: PropsObjectAnimated) => (
   />
 );
 
-type Props = {
-  active: ?boolean,
-};
+function Square(props) {
+  const animatedValue = new Animated.Value(0);
 
-class Square extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.animatedValue = new Animated.Value(0);
-  }
-
-  componentDidMount() {
-    this.animate();
-  }
-
-  setTimingAnimed(originalValue, newValue, duration) {
+  const setTimingAnimed = (originalValue, newValue, duration) => {
+    console.log({originalValue, newValue, duration});
     return Animated.timing(originalValue, {
       toValue: newValue,
       duration,
     });
-  }
+  };
 
-  animate() {
+  const animate = () => {
     Animated.sequence([
-      this.setTimingAnimed(this.animatedValue, 1, 350),
-      this.setTimingAnimed(this.animatedValue, 2, 350),
-      this.setTimingAnimed(this.animatedValue, 0, 350),
+      setTimingAnimed(animatedValue, 1, 350),
+      setTimingAnimed(animatedValue, 2, 350),
+      setTimingAnimed(animatedValue, 0, 350),
     ]).start(() => this.animate());
+  };
+  if (active) {
+    animate();
   }
 
-  render() {
-    const {active} = this.props;
-    return active ? (
-      <View style={styles.container}>
-        <View style={styles.group}>
-          <ObjectAnimated
-            value={this.animatedValue}
-            colors={['#eee', '#000', '#000']}
-            scales={[1.5, 1, 1]}
-          />
-          <ObjectAnimated
-            value={this.animatedValue}
-            colors={['#000', '#eee', '#000']}
-            scales={[1, 1.5, 1]}
-          />
-          <ObjectAnimated
-            value={this.animatedValue}
-            colors={['#000', '#000', '#eee']}
-            scales={[1, 1, 1.5]}
-          />
-        </View>
+  const {active} = props;
+  console.log({active});
+  return active === true ? (
+    <View style={styles.container}>
+      <View style={styles.group}>
+        <ObjectAnimated
+          value={this.animatedValue}
+          colors={['#eee', greenColor, greenColor]}
+          scales={[1.5, 1, 1]}
+        />
+        <ObjectAnimated
+          value={this.animatedValue}
+          colors={[greenColor, '#eee', greenColor]}
+          scales={[1, 1.5, 1]}
+        />
+        <ObjectAnimated
+          value={this.animatedValue}
+          colors={[greenColor, greenColor, '#eee']}
+          scales={[1, 1, 1.5]}
+        />
       </View>
-    ) : (
-      <React.Fragment />
-    );
-  }
+    </View>
+  ) : (
+    <React.Fragment />
+  );
 }
 
 export default Square;

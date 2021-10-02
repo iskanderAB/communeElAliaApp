@@ -19,9 +19,11 @@ import {
   StatusBar,
 } from 'react-native';
 import greenColor from '../../colors/Colors';
+// import Loader from '../../Components/Loader/Loader';
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-const Start = () => {
+function Start(props) {
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} />
@@ -33,15 +35,17 @@ const Start = () => {
           </Text>
         </View>
         <ActivityIndicator size="large" style={styles.loader} />
+        {/* <Loader active={true} /> */}
         <View style={styles.viewTouchableSignUp}>
           <TouchableOpacity
             style={styles.button}
-            // onPress={onPress}
+            // onPress={() => props.navigation.navigate('Login')}
           >
             <Text style={styles.textTouchable}>إبدأ الان</Text>
           </TouchableOpacity>
           <View style={styles.viewSignUp}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('Login')}>
               <Text style={styles.textSignUp}> تسجيل الدخول</Text>
             </TouchableOpacity>
             <Text style={styles.textCompte}>لديك حساب؟</Text>
@@ -50,7 +54,7 @@ const Start = () => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   main: {
@@ -73,11 +77,11 @@ const styles = StyleSheet.create({
   },
   loader: {
     position: 'absolute',
-    top: windowHeight * 0.8,
+    top: windowHeight * 0.72,
     alignSelf: 'center',
   },
   viewTouchableSignUp: {
-    flex: 2,
+    flex: 1,
     // backgroundColor: 'yellow',
   },
   viewSignUp: {
