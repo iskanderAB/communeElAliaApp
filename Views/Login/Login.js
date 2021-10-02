@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     width: windowWidth * 0.7,
+    color: 'black',
   },
   textSignIn: {
     alignSelf: 'center',
