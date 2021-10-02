@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   main: {
     width: windowWidth,
     height: windowHeight,
+    backgroundColor : "white"
   },
   img: {
     alignSelf: 'center',

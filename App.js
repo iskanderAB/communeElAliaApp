@@ -20,8 +20,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Routes from './Components/Routes/Routes';
 
+import Routes from './Components/Routes/Routes';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
