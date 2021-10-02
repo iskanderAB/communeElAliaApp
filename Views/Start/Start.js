@@ -26,29 +26,31 @@ const windowHeight = Dimensions.get('window').height;
 function Start(props) {
   return (
     <SafeAreaView>
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar barStyle={'dark-content'} />
       <View style={styles.main}>
-        <Image style={styles.img} source={require('../../Assets/logoo.png')} />
-        <View style={styles.viewTextSignIn}>
-          <Text style={styles.textSignIn}>
+        <Image
+          style={styles.img}
+          source={require('../../Assets/start_img.png')}
+        />
+        <View style={styles.viewText}>
+          <Text style={styles.text}>
             الآن أصبح من السهل الحصول على المعلومات
           </Text>
         </View>
         <ActivityIndicator size="large" style={styles.loader} />
         {/* <Loader active={true} /> */}
-        <View style={styles.viewTouchableSignUp}>
+        <View style={styles.viewTouchableStart}>
           <TouchableOpacity
-            style={styles.button}
-            // onPress={() => props.navigation.navigate('Login')}
-          >
-            <Text style={styles.textTouchable}>إبدأ الان</Text>
+            style={styles.touchableStartNow}
+            onPress={() => props.navigation.navigate('Language')}>
+            <Text style={styles.textTouchableStartNow}>إبدأ الان</Text>
           </TouchableOpacity>
-          <View style={styles.viewSignUp}>
+          <View style={styles.viewSignin}>
             <TouchableOpacity
               onPress={() => props.navigation.navigate('Login')}>
-              <Text style={styles.textSignUp}> تسجيل الدخول</Text>
+              <Text style={styles.textSignin}> تسجيل الدخول</Text>
             </TouchableOpacity>
-            <Text style={styles.textCompte}>لديك حساب؟</Text>
+            <Text style={styles.textAccount}>لديك حساب؟</Text>
           </View>
         </View>
       </View>
@@ -62,54 +64,61 @@ const styles = StyleSheet.create({
     height: windowHeight,
   },
   img: {
+    top: 10,
     alignSelf: 'center',
     resizeMode: 'contain',
-    width: windowWidth * 0.7,
-    height: windowHeight * 0.65,
-    // backgroundColor:'red',
+    width: windowWidth * 0.6,
+    height: windowHeight * 0.6,
+    // backgroundColor: 'blue',
   },
-  viewTextSignIn: {
-    flex: 1,
-    // backgroundColor: 'red',
+  viewText: {
+    flex: 0.5,
+    top: 20,
+    // backgroundColor: 'yellow',
+    justifyContent: 'flex-start',
   },
-  textSignIn: {
+  text: {
     alignSelf: 'center',
   },
   loader: {
     position: 'absolute',
-    top: windowHeight * 0.72,
+    top: windowHeight * 0.7,
     alignSelf: 'center',
   },
-  viewTouchableSignUp: {
+  viewTouchableStart: {
     flex: 1,
-    // backgroundColor: 'yellow',
+    // backgroundColor: 'red',
+    top: '10%',
   },
-  viewSignUp: {
-    flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'center',
-    top: 15,
-  },
-  textSignUp: {
-    fontWeight: 'bold',
-    color: greenColor,
-    fontSize: 16,
-  },
-  button: {
+  touchableStartNow: {
+    // flex: 1,
     backgroundColor: greenColor,
     borderRadius: 50,
     width: windowWidth / 2,
-    height: 60,
+    height: 50,
     alignSelf: 'center',
     justifyContent: 'center',
   },
-  textTouchable: {
+  textTouchableStartNow: {
     color: 'white',
     alignSelf: 'center',
     fontSize: 22,
     fontWeight: 'bold',
   },
-  textCompte: {
+  viewSignin: {
+    flex: 0,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    alignItems: 'center',
+    paddingTop: 10,
+    // backgroundColor: 'green',
+  },
+  textSignin: {
+    fontWeight: 'bold',
+    color: greenColor,
+    fontSize: 16,
+  },
+  textAccount: {
     fontSize: 16,
   },
 });

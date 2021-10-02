@@ -19,6 +19,7 @@ import {
   StatusBar,
   TextInput,
   ScrollView,
+  Keyboard,
 } from 'react-native';
 import greenColor from '../../colors/Colors';
 // import Loader from '../../Components/Loader/Loader';
@@ -26,10 +27,11 @@ import greenColor from '../../colors/Colors';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-function Login(props) {
+function Signup(props) {
   const [email, setEmail] = useState('');
   const [focus, setFocus] = useState(false);
   const [pwd, setPwd] = useState('');
+  const [repeatPwd, setRepeatPwd] = useState('');
 
   const onChangeEmail = value => {
     setEmail(value);
@@ -37,6 +39,10 @@ function Login(props) {
 
   const onChangePwd = value => {
     setPwd(value);
+  };
+
+  const onChangeRepeatPwd = value => {
+    setRepeatPwd(value);
   };
 
   // useEffect(() => {
@@ -52,43 +58,40 @@ function Login(props) {
         <View style={styles.main}>
           <Image
             style={focus ? styles.smallImg : styles.bigImg}
-            source={require('../../Assets/signin_img.png')}
+            source={require('../../Assets/signup_img.png')}
           />
           <View style={styles.viewTextInputsSignIn}>
             <View style={styles.viewTextSignIn}>
-              <Text style={styles.textSignIn}>تسجيل الدخول</Text>
+              <Text style={styles.textSignIn}>تسجيل </Text>
             </View>
-            <View style={styles.viewInputsTouchables}>
-              <View style={styles.viewInputs}>
-                <TextInput
-                  style={styles.input}
-                  onChangeText={onChangeEmail}
-                  value={email}
-                  placeholder="البريد الإلكتروني"
-                  onFocus={() => setFocus(true)}
-                />
-                <TextInput
-                  style={styles.input}
-                  onChangeText={onChangePwd}
-                  value={pwd}
-                  placeholder="كلمه السر"
-                  onFocus={() => setFocus(true)}
-                />
-              </View>
-              <View style={styles.viewTouchablesSignin}>
-                <TouchableOpacity
-                  style={styles.TouchableSignIn}
-                  onPress={() => props.navigation.navigate('Language')}>
-                  <Text style={styles.TouchableTextSignIn}> تسجيل الدخول</Text>
-                </TouchableOpacity>
-                <View style={styles.viewSignUp}>
-                  <TouchableOpacity
-                    onPress={() => props.navigation.navigate('Signup')}>
-                    <Text style={styles.textSignUp}> تسجيل</Text>
-                  </TouchableOpacity>
-                  <Text style={styles.textCompte}>لديك حساب؟</Text>
-                </View>
-              </View>
+            <View style={styles.viewInputs}>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeEmail}
+                value={email}
+                placeholder="البريد الإلكتروني"
+                onFocus={() => setFocus(true)}
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangePwd}
+                value={pwd}
+                placeholder="كلمه السر"
+                onFocus={() => setFocus(true)}
+              />
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeRepeatPwd}
+                value={repeatPwd}
+                placeholder="أكد كلمة السر"
+                onFocus={() => setFocus(true)}
+                onSubmitEditing={Keyboard.dismiss}
+              />
+              <TouchableOpacity
+                style={styles.TouchableSignIn}
+                onPress={() => props.navigation.navigate('Login')}>
+                <Text style={styles.TouchableTextSignIn}> تسجيل الدخول</Text>
+              </TouchableOpacity>
             </View>
           </View>
           {/* <ActivityIndicator size="large" style={styles.loader} /> */}
@@ -134,23 +137,10 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     justifyContent: 'center',
   },
-  viewInputsTouchables: {
+  viewInputs: {
     flex: 5,
     alignItems: 'center',
     justifyContent: 'space-evenly',
-  },
-  viewInputs: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    // backgroundColor: 'yellow',
-  },
-  viewTouchablesSignin: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    top: '10%',
-    // backgroundColor: 'red',
   },
   input: {
     borderColor: 'gray',
@@ -171,8 +161,8 @@ const styles = StyleSheet.create({
   },
   textSignUp: {
     fontWeight: 'bold',
+    color: 'white',
     fontSize: 16,
-    color: greenColor,
   },
   button: {
     backgroundColor: greenColor,
@@ -197,13 +187,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     alignSelf: 'center',
   },
-  viewSignUp: {
-    flex: 4,
-    flexDirection: 'row',
-    alignSelf: 'center',
-    top: 15,
-    // backgroundColor: 'red',
-  },
 });
 
-export default Login;
+export default Signup;
