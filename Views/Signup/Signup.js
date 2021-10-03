@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: greenColor,
     justifyContent: 'center',
+    borderRadius: 5,
   },
   viewInputs: {
     flex: 5,

@@ -105,12 +105,13 @@ function RequestInfos(props) {
           style: 'success',
           cancellable: true,
         },
+
         callback => {
-          const {NameLastName,fax,email,num,adress,moralPerson,naturalPerson,bayan,haykal,note,ref} = props.route.params;
           postData();
           //console.log(JSON.stringify(props.route.params))
-          props.navigation.navigate('Home')
+          props.navigation.navigate('TabScreens')
         }
+
       );
     } else {
       ToastAndroid.showWithGravity(
@@ -277,13 +278,13 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     width: '50%',
     height: 60,
-    borderTopStartRadius : 25 ,
-    borderBottomStartRadius : 25 ,
+    borderTopStartRadius: 25,
+    borderBottomStartRadius: 25,
     alignSelf: 'flex-end',
     top: 30,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginBottom : '15%'
+    marginBottom: '15%',
     // justifyContent: 'flex-end',
   },
   viewNextPageArrow: {

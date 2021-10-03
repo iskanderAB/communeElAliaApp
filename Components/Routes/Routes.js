@@ -14,7 +14,7 @@ import TabScreens from '../../Views/TabScreens/TabScreens';
 import InstructionsRequest from '../../Views/SendRequest/InstructionsRequest';
 import RequestInfos from '../../Views/SendRequest/RequestInfos';
 import FormatInfos from '../../Views/SendRequest/FormatInfos';
-
+import Profile from '../../Views/Profile/Profile';
 
 const Stack = createNativeStackNavigator();
 // const Tab = cre
@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TabScreens">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Start"
           component={Start}
@@ -61,6 +61,16 @@ function App() {
         <Stack.Screen
           name="FormatInfos"
           component={FormatInfos}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
