@@ -68,6 +68,7 @@ function InstructionRequest(props) {
   const [SocialName, setSocialName] = useState('');
   const [fax, setFax] = useState('');
 
+  //  const [fullname,setFullname] = useState('');
   const selectMoral = () => {
     setMoralPerson(true);
     setNaturalPerson(false);
@@ -191,23 +192,25 @@ function InstructionRequest(props) {
               />
             </View>
           )}
-          <TouchableOpacity
-            style={styles.TouchableNextPageArrow}
-            onPress={() => props.navigation.navigate('RequestInfos')}>
-            <View style={styles.viewNextPageArrow}>
-              <View style={styles.viewArrow}>
-                <Icon
-                  name="arrow-left-circle"
-                  size={30}
-                  color={'white'}
-                  style={styles.arrow}
-                />
-              </View>
-              <View style={styles.viewNextPage}>
-                <Text style={styles.textNextPage}>التالي</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.TouchableNextPageArrow} 
+                            onPress={()=> props.navigation.navigate('RequestInfos', {NameLastName, fax, email , num, adress,moralPerson,naturalPerson})}
+          >
+                <View style={styles.viewNextPageArrow}>
+                  <View style={styles.viewArrow}>
+                    <Icon
+                      name="arrow-left-circle"
+                      size={30}
+                      color={'white'}
+                      style={styles.arrow}
+                    />
+                  </View>
+                  <View style={styles.viewNextPage}>
+                    <Text style={styles.textNextPage}>التالي</Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+
         </View>
       </ScrollView>
     </SafeAreaView>

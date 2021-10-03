@@ -27,6 +27,8 @@ import greenColor from '../../colors/Colors';
 import StepIndicator from 'react-native-step-indicator';
 import {RadioButton, Checkbox} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
+import axios from 'axios';
+import moment from 'moment';
 // import Loader from '../../Components/Loader/Loader';
 // import CheckBox from '@react-native-community/checkbox';
 
@@ -64,6 +66,32 @@ function RequestInfos(props) {
   const [copyNumeric, setCopyNumeric] = useState(false);
   const [getSomeInfos, setGetSomeInfos] = useState(false);
 
+  async function postData(){
+      const {NameLastName,fax,email,num,adress,moralPerson,naturalPerson,bayan,haykal,note,ref} = props.route.params;
+      const postData = {
+        fullname: NameLastName,
+        adress: adress,
+        tel: +num,
+        email: email,
+        type: moralPerson ? true : false ,
+        description: bayan,
+        ref: ref,
+        otherNotes: note,
+        formula: (copyPaper ? 'ورقي' : '') +'/'+ (copyNumeric ? 'الكتروني' : '') + '/' + (readInfos ? 'على عين المكان' : '') + '/' + (getSomeInfos ? 'مقتطفات' : '' )  ,
+        status : false,
+        createdAt: new Date()
+    }
+      await axios.post('http://192.168.1.210:8000/api/demands.json', postData ).then(res => { 
+        props.navigation.navigate('Home')
+      })
+      .catch(e => {
+        console.log('post error =>',e.response.data.message)
+        console.log('dataaa =>' ,postData)
+      })
+     
+  }
+
+
   const displayFinallyToast = () => {
     if (readInfos || copyPaper || copyNumeric || getSomeInfos) {
       SweetAlert.showAlertWithOptions(
@@ -77,7 +105,13 @@ function RequestInfos(props) {
           style: 'success',
           cancellable: true,
         },
-        callback => props.navigation.navigate('TabScreens', {name: 'Home'}),
+
+        callback => {
+          postData();
+          //console.log(JSON.stringify(props.route.params))
+          props.navigation.navigate('TabScreens')
+        }
+
       );
     } else {
       ToastAndroid.showWithGravity(
@@ -87,6 +121,9 @@ function RequestInfos(props) {
       );
     }
   };
+
+
+
 
   return (
     <SafeAreaView>

@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, {useState ,useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -22,7 +22,11 @@ import {
 } from 'react-native';
 import {Avatar, Searchbar} from 'react-native-paper';
 import greenColor from '../../colors/Colors';
+
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
+
+import axios from 'axios';
+
 
 import Post from '../../Components/Post/Post';
 
@@ -37,14 +41,54 @@ const Home = props => {
   const [refreshing, setRefreshing] = useState(false);
   const isDarkMode = useColorScheme() === 'dark';
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [focus, setFocus] = useState(false);
+
+  const [focus , setFocus] = useState(false);
+  const [data, setData] = useState([]);
+
 
   const onChangeSearch = query => setSearchQuery(query);
 
-  const onRefresh = React.useCallback(() => {
+  const onRefresh = React.useCallback(async() => {
+    await axios.get('http://192.168.1.210:8000/api/demands.json').then(res => {
+      setData(res.data)
+    })
+    .catch(e=> {
+      alert(JSON.stringify(e.message))
+    }) ;
     setRefreshing(false);
     //alert(token)
   }, []);
+
+  useEffect(()=> {
+      console.log('succes =>',data)
+  },[data])
+
+  useEffect(async () => {
+      await axios.get('http://192.168.1.210:8000/api/demands.json').then(res => {
+        setData(res.data)
+      })
+      .catch(e=> {
+        alert(JSON.stringify(e.message))
+      }) ;
+ 
+  }, [])
+
+  async function deletePost(id) {
+    await axios.delete(`http://192.168.1.210:8000/api/demands/`+id)
+                .then(res=> {
+                  Alert.alert( 
+                    'بلدية العالية '
+                    , 
+                    " تم محو المطلب عدد  " +id 
+                  )
+                  const newData = data.filter(v => v.id != id)
+                  setData(newData);
+                })
+                .catch(e => {
+                  alert("هناك مشكل اتصل بل البلدية ♥ ")
+                  console.log('errro' , e)
+                })
+  }
 
   return (
     <SafeAreaView>
@@ -116,48 +160,16 @@ const Home = props => {
               style={{height: '100%', backgroundColor: 'red'}}
             />
           }>
-          <Post
-            num={1}
-            date={'12-02-2020'}
-            description="هيئة النّفاذ إلى المعلومة هي هيئة عمومية مستقلّة تتمتّع بالشخصيّة المعنوية والاستقلالية المالية أحدثت بموجب القانون الأساسي عدد22 لسنة 2016 المؤرّخ في 24 مارس 2016 المتعلّق بالحق في النّفاذ الى المعلومة وتمّ انتخاب أعضاء مجلسها من قبل مجلس نواب الشعب في 18 جويلية 2017
-            "
-            temp="10"
-          />
-          <Post
-            num={2}
-            date={'12/02/2020'}
-            description="هيئة النّفاذ إلى المعلومة هي هيئة عمومية مستقلّة تتمتّع بالشخصيّة المعنوية والاستقلالية المالية أحدثت بموجب القانون الأساسي عدد22 لسنة 2016 المؤرّخ في 24 مارس 2016 المتعلّق بالحق في النّفاذ الى المعلومة وتمّ انتخاب أعضاء مجلسها من قبل مجلس نواب الشعب في 18 جويلية 2017
-            "
-            temp="10"
-          />
-          <Post
-            num={3}
-            date={'12/02/2020'}
-            description="هيئة النّفاذ إلى المعلومة هي هيئة عمومية مستقلّة تتمتّع بالشخصيّة المعنوية والاستقلالية المالية أحدثت بموجب القانون الأساسي عدد22 لسنة 2016 المؤرّخ في 24 مارس 2016 المتعلّق بالحق في النّفاذ الى المعلومة وتمّ انتخاب أعضاء مجلسها من قبل مجلس نواب الشعب في 18 جويلية 2017
-            "
-            temp="10"
-          />
-          <Post
-            num={4}
-            date={'12/02/2020'}
-            description="هيئة النّفاذ إلى المعلومة هي هيئة عمومية مستقلّة تتمتّع بالشخصيّة المعنوية والاستقلالية المالية أحدثت بموجب القانون الأساسي عدد22 لسنة 2016 المؤرّخ في 24 مارس 2016 المتعلّق بالحق في النّفاذ الى المعلومة وتمّ انتخاب أعضاء مجلسها من قبل مجلس نواب الشعب في 18 جويلية 2017
-            "
-            temp="10"
-          />
-          <Post
-            num={5}
-            date={'12/02/2020'}
-            description="هيئة النّفاذ إلى المعلومة هي هيئة عمومية مستقلّة تتمتّع بالشخصيّة المعنوية والاستقلالية المالية أحدثت بموجب القانون الأساسي عدد22 لسنة 2016 المؤرّخ في 24 مارس 2016 المتعلّق بالحق في النّفاذ الى المعلومة وتمّ انتخاب أعضاء مجلسها من قبل مجلس نواب الشعب في 18 جويلية 2017
-            "
-            temp="10"
-          />
-          <Post
-            num={6}
-            date={'12/02/2020'}
-            description="هيئة النّفاذ إلى المعلومة هي هيئة عمومية مستقلّة تتمتّع بالشخصيّة المعنوية والاستقلالية المالية أحدثت بموجب القانون الأساسي عدد22 لسنة 2016 المؤرّخ في 24 مارس 2016 المتعلّق بالحق في النّفاذ الى المعلومة وتمّ انتخاب أعضاء مجلسها من قبل مجلس نواب الشعب في 18 جويلية 2017
-            "
-            temp="10"
-          />
+
+          {data && 
+            data.filter(v => v.description.includes(searchQuery)).map(v => {
+              return <Post deletePost={() => {
+                deletePost(v.id);
+
+              }
+                } key={v.id}  num={v.id} date={v.createdAt} formula={v.formula}  fullname={v.fullname} description={v.description} status={v.status}/>
+            })
+          }
           <Text
             style={{
               padding: '10%',
