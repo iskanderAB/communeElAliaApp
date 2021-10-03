@@ -57,17 +57,14 @@ const customStyles = {
 };
 
 function RequestInfos(props) {
-  const [naturalPerson, setNaturalPerson] = useState(true);
-  const [moralPerson, setMoralPerson] = useState(false);
 
-  const [NameLastName, setNameLastName] = useState('');
-  const [adress, setAdress] = useState('');
-  const [num, setNum] = useState('');
-  const [email, setEmail] = useState('');
 
-  const [SocialName, setSocialName] = useState('');
-  const [fax, setFax] = useState('');
+  const [bayan, setBayan] = useState('');
+  const [haykal, setHaykel] = useState('');
+  const [ref, setRef] = useState('');
+  const [note, setNote] = useState('');
 
+  const {NameLastName, fax, email , num, adress,moralPerson,naturalPerson} = props.route.params;
   const selectMoral = () => {
     setMoralPerson(true);
     setNaturalPerson(false);
@@ -103,36 +100,36 @@ function RequestInfos(props) {
           <View style={styles.viewInputs}>
             <TextInput
               style={styles.input}
-              onChangeText={setNameLastName}
-              value={NameLastName}
+              onChangeText={setBayan}
+              value={bayan}
               placeholder="بيان المعلومة"
               placeholderTextColor ={'#9B9999'}
             />
             <TextInput
               style={styles.input}
-              onChangeText={setAdress}
-              value={adress}
+              onChangeText={setHaykel}
+              value={haykal}
               placeholder="الهيكل المعني"
               placeholderTextColor ={'#9B9999'}
             />
             <TextInput
               style={styles.input}
-              onChangeText={setNum}
-              value={num}
+              onChangeText={setRef}
+              value={ref}
               placeholder="المرجع"
               placeholderTextColor ={'#9B9999'}
             />
             <TextInput
               style={styles.input}
-              onChangeText={setEmail}
-              value={email}
+              onChangeText={setNote}
+              value={note}
               placeholder="ملاحظات أخرى"
               placeholderTextColor ={'#9B9999'}
             />
 
           </View>
           <TouchableOpacity style={styles.TouchableNextPageArrow}
-              onPress={()=> props.navigation.navigate('FormatInfos')}
+              onPress={()=> props.navigation.navigate('FormatInfos',{NameLastName, fax, email , num, adress,moralPerson,naturalPerson,bayan,haykal,note,ref})}
             >
               <View style={styles.viewNextPageArrow}>
                 <View style={styles.viewArrow}>

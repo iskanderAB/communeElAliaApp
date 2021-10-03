@@ -68,6 +68,7 @@ function InstructionRequest(props) {
   const [SocialName, setSocialName] = useState('');
   const [fax, setFax] = useState('');
 
+  //  const [fullname,setFullname] = useState('');
   const selectMoral = () => {
     setMoralPerson(true);
     setNaturalPerson(false);
@@ -193,7 +194,7 @@ function InstructionRequest(props) {
             </View>
           )}
           <TouchableOpacity style={styles.TouchableNextPageArrow} 
-                            onPress={()=> props.navigation.navigate('RequestInfos')}
+                            onPress={()=> props.navigation.navigate('RequestInfos', {NameLastName, fax, email , num, adress,moralPerson,naturalPerson})}
           >
                 <View style={styles.viewNextPageArrow}>
                   <View style={styles.viewArrow}>
