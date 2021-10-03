@@ -77,7 +77,7 @@ function RequestInfos(props) {
           style: 'success',
           cancellable: true,
         },
-        callback => console.log('callback'),
+        callback => props.navigation.navigate('Home'),
       );
     } else {
       ToastAndroid.showWithGravity(
@@ -103,7 +103,7 @@ function RequestInfos(props) {
               customStyles={customStyles}
               currentPosition={2}
               labels={labels}
-              stepCount={4}
+              stepCount={3}
             />
           </View>
           <View style={styles.viewInputs}>
@@ -241,12 +241,13 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     width: '50%',
     height: 60,
-    borderRadius: 10,
+    borderTopStartRadius : 25 ,
+    borderBottomStartRadius : 25 ,
     alignSelf: 'flex-end',
     top: 30,
     justifyContent: 'center',
     flexDirection: 'row',
-
+    marginBottom : '15%'
     // justifyContent: 'flex-end',
   },
   viewNextPageArrow: {

@@ -56,7 +56,7 @@ const customStyles = {
   currentStepLabelColor: greenColor,
 };
 
-function Start(props) {
+function InstructionRequest(props) {
   const [naturalPerson, setNaturalPerson] = useState(true);
   const [moralPerson, setMoralPerson] = useState(false);
 
@@ -97,7 +97,7 @@ function Start(props) {
               customStyles={customStyles}
               currentPosition={0}
               labels={labels}
-              stepCount={4}
+              stepCount={3}
             />
           </View>
           <View style={styles.viewCheckBoxs}>
@@ -125,12 +125,14 @@ function Start(props) {
                 onChangeText={setNameLastName}
                 value={NameLastName}
                 placeholder="الاسم و اللقب"
+                placeholderTextColor="gray" 
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setAdress}
                 value={adress}
                 placeholder="العنوان"
+                placeholderTextColor="gray" 
               />
               <TextInput
                 style={styles.input}
@@ -138,28 +140,16 @@ function Start(props) {
                 value={num}
                 placeholder="الهاتف"
                 keyboardType="numeric"
+                placeholderTextColor="gray" 
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="العنوان الالكتروني"
+                placeholderTextColor="gray" 
               />
-              <TouchableOpacity style={styles.TouchableNextPageArrow}>
-                <View style={styles.viewNextPageArrow}>
-                  <View style={styles.viewArrow}>
-                    <Icon
-                      name="arrow-left-circle"
-                      size={30}
-                      color={'white'}
-                      style={styles.arrow}
-                    />
-                  </View>
-                  <View style={styles.viewNextPage}>
-                    <Text style={styles.textNextPage}>التالي</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+
             </View>
           ) : (
             <View style={styles.viewInputs}>
@@ -168,12 +158,14 @@ function Start(props) {
                 onChangeText={setNameLastName}
                 value={NameLastName}
                 placeholder="التسمية الإجتماعية"
+                placeholderTextColor ={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setAdress}
                 value={adress}
                 placeholder="عنوان المقر الإجتماعي"
+                placeholderTextColor ={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
@@ -181,6 +173,7 @@ function Start(props) {
                 value={num}
                 placeholder="الهاتف"
                 keyboardType="numeric"
+                placeholderTextColor ={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
@@ -188,16 +181,20 @@ function Start(props) {
                 value={fax}
                 placeholder="الفاكس"
                 keyboardType="numeric"
+                placeholderTextColor ={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="العنوان الالكتروني"
+                placeholderTextColor ={'#9B9999'}
               />
-              <TouchableOpacity
-                style={styles.TouchableNextPageArrow}
-                onPress={() => moveToNextPage()}>
+            </View>
+          )}
+          <TouchableOpacity style={styles.TouchableNextPageArrow} 
+                            onPress={()=> props.navigation.navigate('RequestInfos')}
+          >
                 <View style={styles.viewNextPageArrow}>
                   <View style={styles.viewArrow}>
                     <Icon
@@ -212,8 +209,6 @@ function Start(props) {
                   </View>
                 </View>
               </TouchableOpacity>
-            </View>
-          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -224,6 +219,7 @@ const styles = StyleSheet.create({
   main: {
     width: windowWidth,
     height: windowHeight,
+    color : 'black'
   },
   viewInstructions: {
     flex: 1,
@@ -238,11 +234,10 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   viewCheckBoxs: {
-    flex: 1,
     justifyContent: 'space-around',
     alignItems: 'flex-start',
     flexDirection: 'row',
-    // backgroundColor: 'red',
+    padding : '2%'
   },
   viewCheckBox: {
     // flex: 5,
@@ -258,15 +253,27 @@ const styles = StyleSheet.create({
     right: 5,
   },
   viewInputs: {
-    flex: 5,
-    width: windowWidth,
+    flex: 3,
     justifyContent: 'flex-start',
-    // backgroundColor: 'yellow',
+    color : 'black',
+    padding : 1 ,
+    shadowOffset: { width: 0, height: 2},
+    shadowRadius: 10,
+    elevation: 3,
+    width : '95%',
+    alignSelf : 'center',
+    borderRadius : 10,
+    backgroundColor: 'white',
+    opacity : 0.8
   },
   input: {
     height: 40,
     margin: 12,
     borderWidth: 0,
+    color : 'black',
+    borderWidth : 1,
+    borderColor : 'gray',
+    borderRadius : 10
     // padding: 20,
     // paddingBottom: '20%',
   },
@@ -274,12 +281,13 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     width: '50%',
     height: 60,
-    borderRadius: 10,
+    borderTopStartRadius : 25 ,
+    borderBottomStartRadius : 25 ,
     alignSelf: 'flex-end',
     top: 30,
     justifyContent: 'center',
     flexDirection: 'row',
-
+    marginBottom : '15%'
     // justifyContent: 'flex-end',
   },
   viewNextPageArrow: {
@@ -303,4 +311,4 @@ const styles = StyleSheet.create({
   arrow: {},
 });
 
-export default Start;
+export default InstructionRequest;
