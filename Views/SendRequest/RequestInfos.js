@@ -153,10 +153,6 @@ function RequestInfos(props) {
                   <Text style={styles.textNextPage}>التالي</Text>
                 </View>
               </View>
-              <View style={styles.viewNextPage}>
-                <Text style={styles.textNextPage}>التالي</Text>
-              </View>
-            </View>
           </TouchableOpacity>
         </View>
       </ScrollView>

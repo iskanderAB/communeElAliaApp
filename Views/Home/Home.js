@@ -162,7 +162,7 @@ const Home = props => {
           }>
 
           {data && 
-            data.filter(v => v.description.includes(searchQuery)).map(v => {
+            data.filter(v => v.description.includes(searchQuery) || v.fullname.includes(searchQuery)).map(v => {
               return <Post deletePost={() => {
                 deletePost(v.id);
 

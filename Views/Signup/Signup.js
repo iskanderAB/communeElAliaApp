@@ -71,6 +71,7 @@ function Signup(props) {
                 value={email}
                 placeholder="البريد الإلكتروني"
                 onFocus={() => setFocus(true)}
+                placeholderTextColor={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
@@ -78,6 +79,7 @@ function Signup(props) {
                 value={pwd}
                 placeholder="كلمه السر"
                 onFocus={() => setFocus(true)}
+                placeholderTextColor={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
@@ -86,11 +88,12 @@ function Signup(props) {
                 placeholder="أكد كلمة السر"
                 onFocus={() => setFocus(true)}
                 onSubmitEditing={Keyboard.dismiss}
+                placeholderTextColor={'#9B9999'}
               />
               <TouchableOpacity
                 style={styles.TouchableSignIn}
                 onPress={() => props.navigation.navigate('Login')}>
-                <Text style={styles.TouchableTextSignIn}> تسجيل الدخول</Text>
+                <Text style={styles.TouchableTextSignIn}> تسجيل </Text>
               </TouchableOpacity>
             </View>
           </View>

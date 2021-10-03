@@ -66,6 +66,7 @@ function Login(props) {
                   value={email}
                   placeholder="البريد الإلكتروني"
                   onFocus={() => setFocus(true)}
+                  placeholderTextColor={'#9B9999'}
                 />
                 <TextInput
                   style={styles.input}
@@ -73,6 +74,7 @@ function Login(props) {
                   value={pwd}
                   placeholder="كلمه السر"
                   onFocus={() => setFocus(true)}
+                  placeholderTextColor={'#9B9999'}
                 />
               </View>
               <View style={styles.viewTouchablesSignin}>
