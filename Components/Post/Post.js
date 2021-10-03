@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Avatar, Card, Title, Paragraph} from 'react-native-paper';
+import {Button, Dialog, Portal} from 'react-native-paper';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   StyleSheet,
   Text,
@@ -7,17 +10,19 @@ import {
   ActivityIndicator,
   View,
   Linking,
+  TouchableHighlight,
 } from 'react-native';
 import {IconButton, Colors} from 'react-native-paper';
 import moment from 'moment';
 // import greenColor from '../../colors/Colors';
 const greenColor = '#019875'
-const Post = ({temp, description, date, num}) => {
+const Post = ({temp, description, date, num,fullname,formula , status ,deletePost}) => {
   const [love, setLove] = useState(false);
-
+  const [visible, setVisible] = React.useState(false);
 
   return (
-    <Card style={styles.post} onPress={() => 0}>
+    <>  
+    <Card style={styles.post} onPress={() => 0} onLongPress={()=>setVisible(true)}>
       <Text
         style={{
           textAlign: 'right',
@@ -39,7 +44,7 @@ const Post = ({temp, description, date, num}) => {
             justifyContent: 'center',
             textShadowRadius: 1,
           }}>
-          : {date}
+          : {moment(date).format('ll')}
         </Text>
       </Text>
       <Card.Content style={{paddingHorizontal: 5}}>
@@ -51,7 +56,7 @@ const Post = ({temp, description, date, num}) => {
               margin: '3%',
             }}>
             {' '}
-            iskander@gmail.com{' '}
+            {fullname}{' '}
           </Text>
           <Paragraph
             style={{
@@ -70,8 +75,14 @@ const Post = ({temp, description, date, num}) => {
               textDecorationColor: 'red',
             }}>
             {' '}
-            نسخة ورقية{' '}
+            {formula}
+            {' '}
           </Text>
+          {status ? 
+            <Ionicons name={'checkmark-done-outline'} size={30}  color={greenColor} />
+            :
+            <Ionicons name={'close-sharp'} size={30}  color={'red'} />
+          }
         </>
       </Card.Content>
       <Card.Actions
@@ -85,10 +96,41 @@ const Post = ({temp, description, date, num}) => {
             padding: '3%',
           }}>
           {' '}
-          عندك {temp} ايام{' '}
+          عندك {moment().diff(date,'days')} ايام{' '}
         </Text>
       </Card.Actions>
     </Card>
+    <Portal>
+        <Dialog visible={visible} onDismiss={() => setVisible(false)}>
+          <Dialog.Content>
+          <TouchableHighlight
+              activeOpacity={0.6}
+              underlayColor="#DDDDDD"
+              onPress={() => setVisible(false)}>
+              <View style={{flexDirection : 'row-reverse' ,justifyContent :'space-between' , alignItems:'center',paddingVertical : '5%'}}>
+                <Text style={styles.itemsAlert}>     تقديم شكوى    </Text>
+                <Ionicons name={'clipboard-sharp'} size={25}  color={'black'} />
+              </View>
+            </TouchableHighlight>
+            <TouchableHighlight
+              activeOpacity={0.6}
+              underlayColor="#DDDDDD"
+              onPress={() => {
+                  deletePost();
+                  setVisible(false);
+              }}>
+              <View style={{flexDirection : 'row-reverse' ,justifyContent :'space-between' , alignItems:'center',paddingVertical : '5%'}}>
+                <Text style={styles.itemsAlert}>    افسخها  </Text>
+                <Ionicons name={'trash'} size={25}  color={'black'} />
+              </View>
+            </TouchableHighlight>
+          </Dialog.Content>
+          {/* <Dialog.Actions>
+            <Button onPress={() => setVisible(false)}>Done</Button>
+          </Dialog.Actions> */}
+        </Dialog>
+      </Portal>
+    </>
   );
 };
 
