@@ -77,7 +77,7 @@ function RequestInfos(props) {
           style: 'success',
           cancellable: true,
         },
-        callback => props.navigation.navigate('Home'),
+        callback => props.navigation.navigate('TabScreens', {name: 'Home'}),
       );
     } else {
       ToastAndroid.showWithGravity(
@@ -241,13 +241,13 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     width: '50%',
     height: 60,
-    borderTopStartRadius : 25 ,
-    borderBottomStartRadius : 25 ,
+    borderTopStartRadius: 25,
+    borderBottomStartRadius: 25,
     alignSelf: 'flex-end',
     top: 30,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginBottom : '15%'
+    marginBottom: '15%',
     // justifyContent: 'flex-end',
   },
   viewNextPageArrow: {

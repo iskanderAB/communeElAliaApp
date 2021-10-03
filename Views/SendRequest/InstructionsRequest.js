@@ -125,14 +125,14 @@ function InstructionRequest(props) {
                 onChangeText={setNameLastName}
                 value={NameLastName}
                 placeholder="الاسم و اللقب"
-                placeholderTextColor="gray" 
+                placeholderTextColor="gray"
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setAdress}
                 value={adress}
                 placeholder="العنوان"
-                placeholderTextColor="gray" 
+                placeholderTextColor="gray"
               />
               <TextInput
                 style={styles.input}
@@ -140,16 +140,15 @@ function InstructionRequest(props) {
                 value={num}
                 placeholder="الهاتف"
                 keyboardType="numeric"
-                placeholderTextColor="gray" 
+                placeholderTextColor="gray"
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="العنوان الالكتروني"
-                placeholderTextColor="gray" 
+                placeholderTextColor="gray"
               />
-
             </View>
           ) : (
             <View style={styles.viewInputs}>
@@ -158,14 +157,14 @@ function InstructionRequest(props) {
                 onChangeText={setNameLastName}
                 value={NameLastName}
                 placeholder="التسمية الإجتماعية"
-                placeholderTextColor ={'#9B9999'}
+                placeholderTextColor={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setAdress}
                 value={adress}
                 placeholder="عنوان المقر الإجتماعي"
-                placeholderTextColor ={'#9B9999'}
+                placeholderTextColor={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
@@ -173,7 +172,7 @@ function InstructionRequest(props) {
                 value={num}
                 placeholder="الهاتف"
                 keyboardType="numeric"
-                placeholderTextColor ={'#9B9999'}
+                placeholderTextColor={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
@@ -181,34 +180,34 @@ function InstructionRequest(props) {
                 value={fax}
                 placeholder="الفاكس"
                 keyboardType="numeric"
-                placeholderTextColor ={'#9B9999'}
+                placeholderTextColor={'#9B9999'}
               />
               <TextInput
                 style={styles.input}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="العنوان الالكتروني"
-                placeholderTextColor ={'#9B9999'}
+                placeholderTextColor={'#9B9999'}
               />
             </View>
           )}
-          <TouchableOpacity style={styles.TouchableNextPageArrow} 
-                            onPress={()=> props.navigation.navigate('RequestInfos')}
-          >
-                <View style={styles.viewNextPageArrow}>
-                  <View style={styles.viewArrow}>
-                    <Icon
-                      name="arrow-left-circle"
-                      size={30}
-                      color={'white'}
-                      style={styles.arrow}
-                    />
-                  </View>
-                  <View style={styles.viewNextPage}>
-                    <Text style={styles.textNextPage}>التالي</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.TouchableNextPageArrow}
+            onPress={() => props.navigation.navigate('RequestInfos')}>
+            <View style={styles.viewNextPageArrow}>
+              <View style={styles.viewArrow}>
+                <Icon
+                  name="arrow-left-circle"
+                  size={30}
+                  color={'white'}
+                  style={styles.arrow}
+                />
+              </View>
+              <View style={styles.viewNextPage}>
+                <Text style={styles.textNextPage}>التالي</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -219,7 +218,7 @@ const styles = StyleSheet.create({
   main: {
     width: windowWidth,
     height: windowHeight,
-    color : 'black'
+    color: 'black',
   },
   viewInstructions: {
     flex: 1,
@@ -237,7 +236,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'flex-start',
     flexDirection: 'row',
-    padding : '2%'
+    padding: '2%',
   },
   viewCheckBox: {
     // flex: 5,
@@ -255,25 +254,24 @@ const styles = StyleSheet.create({
   viewInputs: {
     flex: 3,
     justifyContent: 'flex-start',
-    color : 'black',
-    padding : 1 ,
-    shadowOffset: { width: 0, height: 2},
+    color: 'black',
+    padding: 1,
+    shadowOffset: {width: 0, height: 2},
     shadowRadius: 10,
     elevation: 3,
-    width : '95%',
-    alignSelf : 'center',
-    borderRadius : 10,
+    width: '95%',
+    alignSelf: 'center',
+    borderRadius: 10,
     backgroundColor: 'white',
-    opacity : 0.8
+    opacity: 0.8,
   },
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 0,
-    color : 'black',
-    borderWidth : 1,
-    borderColor : 'gray',
-    borderRadius : 10
+    borderWidth: 1,
+    color: 'black',
+    borderColor: 'gray',
+    borderRadius: 10,
     // padding: 20,
     // paddingBottom: '20%',
   },
@@ -281,13 +279,13 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     width: '50%',
     height: 60,
-    borderTopStartRadius : 25 ,
-    borderBottomStartRadius : 25 ,
+    borderTopStartRadius: 25,
+    borderBottomStartRadius: 25,
     alignSelf: 'flex-end',
     top: 30,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginBottom : '15%'
+    marginBottom: '15%',
     // justifyContent: 'flex-end',
   },
   viewNextPageArrow: {

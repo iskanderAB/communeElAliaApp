@@ -20,6 +20,7 @@ import {
   Dimensions,
   Alert,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import {Avatar, Searchbar} from 'react-native-paper';
 import {Button, Paragraph, Dialog, Portal} from 'react-native-paper';
@@ -27,6 +28,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import greenColor from '../../colors/Colors';
 import Notif from '../../Components/Notif/Notif';
 import Post from '../../Components/Post/Post';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -37,7 +40,7 @@ const Item = ({title}) => (
 );
 const renderItem = ({item}) => <Item title={item.title} />;
 
-const Notifications = () => {
+const Notifications = props => {
   const [refreshing, setRefreshing] = useState(false);
   const isDarkMode = useColorScheme() === 'dark';
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -66,7 +69,27 @@ const Notifications = () => {
               : {flexDirection: 'row', width: '100%'}
           }>
           {!focus ? (
-            <Avatar.Icon size={35} backgroundColor={greenColor} icon="face" />
+            <TouchableOpacity
+              onPress={() =>
+                Alert.alert(' ', 'هل تريد الخروج حقاً ؟ ', [
+                  {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                  },
+                  {
+                    text: 'OK',
+                    onPress: () => props.navigation.navigate('Login'),
+                  },
+                ])
+              }>
+              <Icon
+                name="logout"
+                size={25}
+                color={greenColor}
+                // style={styles.arrow}
+              />
+            </TouchableOpacity>
           ) : null}
           <Searchbar
             placeholder="البحث عن مطلب ..."
@@ -125,22 +148,36 @@ const Notifications = () => {
       <Portal>
         <Dialog visible={visible} onDismiss={() => setVisible(false)}>
           <Dialog.Content>
-          <TouchableHighlight
+            <TouchableHighlight
               activeOpacity={0.6}
               underlayColor="#DDDDDD"
               onPress={() => setVisible(false)}>
-              <View style={{flexDirection : 'row-reverse' ,justifyContent :'space-between' , alignItems:'center'}}>
-                <Text style={styles.itemsAlert}>    نحي الاشعارات   </Text>
-                <Ionicons name={'notifications-off'} size={25}  color={'black'} />
+              <View
+                style={{
+                  flexDirection: 'row-reverse',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <Text style={styles.itemsAlert}> نحي الاشعارات </Text>
+                <Ionicons
+                  name={'notifications-off'}
+                  size={25}
+                  color={'black'}
+                />
               </View>
             </TouchableHighlight>
             <TouchableHighlight
               activeOpacity={0.6}
               underlayColor="#DDDDDD"
               onPress={() => setVisible(false)}>
-              <View style={{flexDirection : 'row-reverse' ,justifyContent :'space-between' , alignItems:'center'}}>
-                <Text style={styles.itemsAlert}>    افسخها  </Text>
-                <Ionicons name={'trash'} size={25}  color={'black'} />
+              <View
+                style={{
+                  flexDirection: 'row-reverse',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <Text style={styles.itemsAlert}> افسخها </Text>
+                <Ionicons name={'trash'} size={25} color={'black'} />
               </View>
             </TouchableHighlight>
           </Dialog.Content>
@@ -182,10 +219,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
-  itemsAlert : {
-      paddingVertical : 20 , 
-      fontSize : 20,
-  }
+  itemsAlert: {
+    paddingVertical: 20,
+    fontSize: 20,
+  },
 });
 
 export default Notifications;

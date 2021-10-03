@@ -102,52 +102,59 @@ function RequestInfos(props) {
           </View>
           <View style={styles.viewInputs}>
             <TextInput
-              style={styles.input}
+              style={{
+                height: 80,
+                margin: 12,
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 10,
+              }}
               onChangeText={setNameLastName}
               value={NameLastName}
               placeholder="بيان المعلومة"
-              placeholderTextColor ={'#9B9999'}
+              placeholderTextColor={'#9B9999'}
+              multiline={true}
+              numberOfLines={5}
             />
             <TextInput
               style={styles.input}
               onChangeText={setAdress}
               value={adress}
               placeholder="الهيكل المعني"
-              placeholderTextColor ={'#9B9999'}
+              placeholderTextColor={'#9B9999'}
             />
             <TextInput
               style={styles.input}
               onChangeText={setNum}
               value={num}
               placeholder="المرجع"
-              placeholderTextColor ={'#9B9999'}
+              placeholderTextColor={'#9B9999'}
             />
             <TextInput
               style={styles.input}
               onChangeText={setEmail}
               value={email}
               placeholder="ملاحظات أخرى"
-              placeholderTextColor ={'#9B9999'}
+              placeholderTextColor={'#9B9999'}
             />
-
           </View>
-          <TouchableOpacity style={styles.TouchableNextPageArrow}
-              onPress={()=> props.navigation.navigate('FormatInfos')}
-            >
-              <View style={styles.viewNextPageArrow}>
-                <View style={styles.viewArrow}>
-                  <Icon
-                    name="arrow-left-circle"
-                    size={30}
-                    color={'white'}
-                    style={styles.arrow}
-                  />
-                </View>
-                <View style={styles.viewNextPage}>
-                  <Text style={styles.textNextPage}>التالي</Text>
-                </View>
+          <TouchableOpacity
+            style={styles.TouchableNextPageArrow}
+            onPress={() => props.navigation.navigate('FormatInfos')}>
+            <View style={styles.viewNextPageArrow}>
+              <View style={styles.viewArrow}>
+                <Icon
+                  name="arrow-left-circle"
+                  size={30}
+                  color={'white'}
+                  style={styles.arrow}
+                />
               </View>
-            </TouchableOpacity>
+              <View style={styles.viewNextPage}>
+                <Text style={styles.textNextPage}>التالي</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
   main: {
     width: windowWidth,
     height: windowHeight,
-    paddingBottom : '20%'
+    paddingBottom: '20%',
   },
   viewInstructions: {
     flex: 0.4,
@@ -167,7 +174,7 @@ const styles = StyleSheet.create({
   },
   viewStepIndicator: {
     flex: 0.4,
-    
+
     // backgroundColor: 'yellow',
   },
   textRequest: {
@@ -194,26 +201,25 @@ const styles = StyleSheet.create({
     right: 5,
   },
   viewInputs: {
-    
     width: windowWidth,
     justifyContent: 'flex-start',
-    padding : 1 ,
-    shadowOffset: { width: 0, height: 2},
+    padding: 1,
+    shadowOffset: {width: 0, height: 2},
     shadowRadius: 10,
     elevation: 3,
-    width : '95%',
-    alignSelf : 'center',
-    borderRadius : 10,
+    width: '95%',
+    alignSelf: 'center',
+    borderRadius: 10,
     backgroundColor: 'white',
-    opacity : 0.8
+    opacity: 0.8,
     // backgroundColor: 'yellow',
   },
   input: {
     height: 40,
     margin: 12,
-    borderWidth : 1,
-    borderColor : 'gray',
-    borderRadius : 10
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 10,
     // padding: 20,
     // paddingBottom: '20%',
   },
@@ -221,13 +227,13 @@ const styles = StyleSheet.create({
     backgroundColor: greenColor,
     width: '50%',
     height: 60,
-    borderTopStartRadius : 25 ,
-    borderBottomStartRadius : 25 ,
+    borderTopStartRadius: 25,
+    borderBottomStartRadius: 25,
     alignSelf: 'flex-end',
     top: 30,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginBottom : '15%'
+    marginBottom: '15%',
 
     // justifyContent: 'flex-end',
   },
