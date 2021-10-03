@@ -9,6 +9,7 @@ import Home from '../Home/Home';
 import Login from '../Login/Login';
 import About from '../About/About';
 import Notifications from '../Notifications/Notifications';
+import InstructionRequest from '../SendRequest/InstructionsRequest';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,18 +42,15 @@ const TabScreens = (props) => {
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={25}  color={color} />;
                 },
-                headerShown: false
+                headerShown: false,
+                tabBarInactiveTintColor : 'gray',
+                tabBarActiveTintColor : '#119219',
+                tabBarShowLabel : false,
             })
-            }
-            tabBarOptions={{
-                activeTintColor: '#119219',
-                inactiveTintColor: 'gray',
-                showLabel: false,
-                headerShown: false
-            }}>
+            }>
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Profile" component={Login} />
-            <Tab.Screen name="Add" component={Login} />
+            <Tab.Screen name="Add" component={InstructionRequest} />
             <Tab.Screen name="Notif" component={Notifications} />
             <Tab.Screen name="About" component={About} />
         </Tab.Navigator>

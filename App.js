@@ -21,6 +21,7 @@ import {
   Dimensions,
 } from 'react-native';
 import {Provider ,DefaultTheme} from 'react-native-paper';
+import greenColor from './colors/Colors';
 
 import Routes from './Components/Routes/Routes';
 const windowWidth = Dimensions.get('window').width;
@@ -31,7 +32,7 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: 'green',
-    accent: 'yellow',
+    accent: greenColor,
   },
 };
 
